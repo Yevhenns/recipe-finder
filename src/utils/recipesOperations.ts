@@ -9,7 +9,8 @@ export const fetchRecipes = async ({
   const res = await fetch(
     `${BASE_URL}/recipes/complexSearch?query=${query}&cuisine=${cuisine}${
       maxReadyTime ? `&maxReadyTime=${maxReadyTime}` : ""
-    }&apiKey=${API_KEY}`
+    }&apiKey=${API_KEY}`,
+    { next: { revalidate: 60 } }
   );
   const data: RecipeResponse = await res.json();
 
@@ -18,7 +19,8 @@ export const fetchRecipes = async ({
 
 export const fetchRecipeDetails = async (recipeId: string) => {
   const res = await fetch(
-    `${BASE_URL}/recipes/${recipeId}/information?apiKey=${API_KEY}`
+    `${BASE_URL}/recipes/${recipeId}/information?apiKey=${API_KEY}`,
+    { next: { revalidate: 60 } }
   );
   const data: RecipeDetails = await res.json();
 
