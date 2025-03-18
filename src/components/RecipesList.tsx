@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function RecipesList({ recipes }: { recipes: Recipe[] }) {
   return (
-    <>
+    <div className="p-2 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 max-w-6xl mx-auto w-full">
       {recipes.map(({ id, image, title }) => (
         <Link
           key={id}
@@ -24,6 +24,6 @@ export default function RecipesList({ recipes }: { recipes: Recipe[] }) {
           />
         </Link>
       ))}
-    </>
+    </div>
   );
 }
