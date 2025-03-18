@@ -9,8 +9,22 @@ type RecipeResponse = {
   results: Recipe[];
 };
 
-type SearchParams = {
+type RecipesListSearchParams = {
   query?: string;
   cuisine?: string;
   maxReadyTime?: string;
+};
+
+type Ingredient = {
+  id: number;
+  name: string;
+};
+
+type RecipeDetails = {
+  id: number;
+  title: string;
+  extendedIngredients: Ingredient[];
+  image: string;
+  imageType: "jpg";
+  summary: string;
 };
