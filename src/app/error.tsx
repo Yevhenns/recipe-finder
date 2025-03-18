@@ -1,7 +1,9 @@
-export default function Loading() {
+"use client";
+
+export default function Error() {
   return (
     <div className="flex items-center justify-center min-h-screen">
-      <p>Loading...</p>
+      <p>Error</p>
     </div>
   );
 }

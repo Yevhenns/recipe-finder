@@ -8,7 +8,8 @@ export default function RecipesList({ recipes }: { recipes: Recipe[] }) {
         <Link
           key={id}
           href={`/recipes/${id}`}
-          className="flex flex-col justify-between border rounded-lg shadow-md overflow-hidden"
+          className={`flex flex-col justify-between border rounded-lg
+            shadow-md overflow-hidden transition hover:scale-105`}
         >
           <div className="p-2">
             <h2>{title}</h2>
