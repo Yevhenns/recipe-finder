@@ -11,16 +11,16 @@ export const fetchRecipes = async ({
       maxReadyTime ? `&maxReadyTime=${maxReadyTime}` : ""
     }&apiKey=${API_KEY}`
   );
-  const { results }: RecipeResponse = await res.json();
+  const data: RecipeResponse = await res.json();
 
-  return results;
+  return data;
 };
 
 export const fetchRecipeDetails = async (recipeId: string) => {
   const res = await fetch(
     `${BASE_URL}/recipes/${recipeId}/information?apiKey=${API_KEY}`
   );
-  const results: RecipeDetails = await res.json();
+  const data: RecipeDetails = await res.json();
 
-  return results;
+  return data;
 };

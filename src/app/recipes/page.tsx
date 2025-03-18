@@ -10,12 +10,12 @@ export default async function Recipes({
   const params = await searchParams;
   const { query, cuisine, maxReadyTime } = params;
 
-  const recipes = await fetchRecipes({ query, cuisine, maxReadyTime });
+  const recipesData = await fetchRecipes({ query, cuisine, maxReadyTime });
 
   return (
     <div>
-      <h1>Recipes Page</h1>
-      {recipes.map(({ id, image, title }) => (
+      <h1 className="text-center mb-2 text-xl">Recipes Page</h1>
+      {recipesData.results.map(({ id, image, title }) => (
         <Link key={id} href={`/recipes/${id}`}>
           <div>
             <h2>{title}</h2>

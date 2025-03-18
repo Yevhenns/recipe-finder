@@ -14,7 +14,7 @@ export default async function RecipeDetails({
 
   return (
     <div>
-      <h1>Recipe details</h1>
+      <h1 className="text-center mb-2 text-xl">Recipe details</h1>
       <h2>{title}</h2>
       <Image src={image} width={200} height={148} alt="item pic" priority />
       <h3>Summary</h3>
