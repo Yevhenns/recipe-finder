@@ -1,18 +1,15 @@
 import Image from "next/image";
 import { fetchRecipeDetails } from "@/utils/recipesOperations";
 
-interface Props {
-  params: {
-    id: string;
-  };
-}
+type RecipeDetailsProps = Promise<{ id: string }>;
 
-export default async function RecipeDetails({ params }: Props) {
-  const { id } = await params;
+export default async function RecipeDetails(props: {
+  params: RecipeDetailsProps;
+}) {
+  const { id } = await props.params;
 
   const recipeDetails = await fetchRecipeDetails(id);
   const { image, title, summary, extendedIngredients } = recipeDetails;
-  console.log(recipeDetails);
 
   return (
     <div
