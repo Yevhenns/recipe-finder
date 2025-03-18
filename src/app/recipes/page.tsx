@@ -1,5 +1,5 @@
+import RecipesList from "@/components/RecipesList";
 import { fetchRecipes } from "@/utils/recipesOperations";
-import Image from "next/image";
 import Link from "next/link";
 
 export default async function Recipes({
@@ -11,24 +11,22 @@ export default async function Recipes({
   const { query, cuisine, maxReadyTime } = params;
 
   const recipesData = await fetchRecipes({ query, cuisine, maxReadyTime });
+  const recipes = recipesData.results;
 
   return (
-    <div>
+    <div className="p-2">
       <h1 className="text-center mb-2 text-xl">Recipes Page</h1>
-      {recipesData.results.map(({ id, image, title }) => (
-        <Link key={id} href={`/recipes/${id}`}>
-          <div>
-            <h2>{title}</h2>
-            <Image
-              src={image}
-              width={200}
-              height={148}
-              alt="item pic"
-              priority
-            />
+      <div className="p-2 grid grid-cols-2 gap-4 max-w-2xl mx-auto w-full">
+        {recipes.length === 0 && (
+          <div className="text-center">
+            <p>Nothing found</p>
+            <Link className="underline hover:text-blue-500" href={"/"}>
+              Go to home page
+            </Link>
           </div>
-        </Link>
-      ))}
+        )}
+        <RecipesList recipes={recipes} />
+      </div>
     </div>
   );
 }
